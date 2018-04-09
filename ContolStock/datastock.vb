@@ -28,11 +28,14 @@
         If TextBox1.Text = "" Or TextBox2.Text = "" Or TextBox3.Text = "" Or TextBox4.Text = "" Then
             MsgBox("Data belum lengkap, Pastikan Semua form terisi")
         Else
-            Dim tblsimpan As String = "INSERT INTO stock (kode, Nama, Merek, Jumlah,Satuan)" _
-                                & "VALUES('" & TextBox1.Text & "','" & TextBox2.Text & "', '" & TextBox4.Text & "', '" & TextBox3.Text & "','" & TextBox5.Text & "')"
+            Dim njum As Integer = Val(TextBox6.Text) + Val(TextBox3.Text)
+            Dim tblupdate As String = "Update stock set Jumlah = " & njum & " where kode = '" & TextBox1.Text & "'"
+            Call simpandata(tblupdate)
+            Dim tblsimpan As String = "INSERT INTO stock_masuk(Kode_barang,Jumlah_masuk,Tanggal)" _
+                                      & "VALUES('" & TextBox1.Text & "','" & TextBox3.Text & "','" & Format(DateTimePicker1.Value, "yyyy-MM-dd") & "')"
             Call simpandata(tblsimpan)
             MsgBox("Data Stock Berhasil Ditambah", MsgBoxStyle.Information, "Information")
-            Form5.DataGridView1.Refresh()
+            Form5.isigrid()
             Me.Close()
         End If
     End Sub
@@ -52,5 +55,9 @@
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Me.Close()
+    End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
+
     End Sub
 End Class

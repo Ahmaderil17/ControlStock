@@ -10,6 +10,7 @@ Public Class Formpilih
             datastock.TextBox2.Text = TextBox3.Text
             datastock.TextBox4.Text = TextBox4.Text
             datastock.TextBox5.Text = TextBox5.Text
+            datastock.TextBox6.Text = TextBox7.Text
             Me.Close()
         End If
     End Sub
@@ -40,6 +41,7 @@ Public Class Formpilih
                 TextBox2.Text = .Item(0, baris).Value
                 TextBox3.Text = .Item(1, baris).Value
                 TextBox4.Text = .Item(2, baris).Value
+                TextBox7.Text = .Item(3, baris).Value
                 TextBox5.Text = .Item(6, baris).Value
                
             End With
